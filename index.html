@@ -1,10 +1,79 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + Svelte</title>
+    
+    <!-- 기본 메타 태그 -->
+    <title>ZPL 바코드 생성기 - 온라인 바코드 생성 도구</title>
+    <meta name="description" content="ZPL(Zebra Programming Language) 코드를 입력하면 바코드 이미지를 자동으로 생성하는 무료 온라인 도구입니다. Code 128, QR Code, EAN-13 등 다양한 바코드 타입을 지원합니다." />
+    <meta name="keywords" content="ZPL, 바코드 생성기, 바코드, QR 코드, Code 128, EAN-13, 온라인 도구, 무료" />
+    <meta name="author" content="ZPL Form App" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Open Graph 태그 -->
+    <meta property="og:title" content="ZPL 바코드 생성기 - 온라인 바코드 생성 도구" />
+    <meta property="og:description" content="ZPL 코드를 입력하면 바코드 이미지를 자동으로 생성하는 무료 온라인 도구입니다." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://your-domain.com" />
+    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="ko_KR" />
+    
+    <!-- Twitter Card 태그 -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ZPL 바코드 생성기 - 온라인 바코드 생성 도구" />
+    <meta name="twitter:description" content="ZPL 코드를 입력하면 바코드 이미지를 자동으로 생성하는 무료 온라인 도구입니다." />
+    <meta name="twitter:image" content="/og-image.png" />
+    
+    <!-- 추가 메타 태그 -->
+    <meta name="theme-color" content="#6366f1" />
+    <meta name="msapplication-TileColor" content="#6366f1" />
+    <link rel="canonical" href="https://your-domain.com" />
+    
+    <!-- 성능 최적화 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="format-detection" content="telephone=no" />
+    
+    <!-- 보안 헤더 -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    
+    <!-- 구조화된 데이터 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "ZPL 바코드 생성기",
+      "description": "ZPL(Zebra Programming Language) 코드를 입력하면 바코드 이미지를 자동으로 생성하는 무료 온라인 도구입니다.",
+      "url": "https://your-domain.com",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "KRW"
+      },
+      "featureList": [
+        "ZPL 코드 파싱",
+        "다양한 바코드 타입 지원",
+        "실시간 바코드 생성",
+        "템플릿 시스템",
+        "이미지 다운로드"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "ZPL Form App"
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="app"></div>

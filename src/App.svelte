@@ -70,6 +70,15 @@
       // 성공한 결과만 필터링
       generatedImages = results.filter(result => result && result.type === 'success').map(result => result.dataUrl);
       console.log('생성된 이미지:', generatedImages);
+      
+      // 바코드 생성 성공 시 SEO 메타 태그 업데이트
+      if (generatedImages.length > 0) {
+        const barcodeTypes = [...new Set(barcodes.map(b => b.type))].join(', ');
+        updateMetaTags(
+          `${barcodeTypes} 바코드 생성 완료 - ZPL 바코드 생성기`,
+          `${barcodes.length}개의 ${barcodeTypes} 바코드가 성공적으로 생성되었습니다. ZPL 코드를 바코드 이미지로 변환하는 무료 온라인 도구입니다.`
+        );
+      }
     } catch (err) {
       console.error('오류 발생:', err);
       error = err.message;
@@ -122,9 +131,41 @@
     showModal = false;
     modalMessage = '';
   }
+
+  // SEO를 위한 동적 메타 태그 업데이트
+  function updateMetaTags(title, description) {
+    if (typeof document !== 'undefined') {
+      document.title = title;
+      
+      // 메타 설명 업데이트
+      let metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute('content', description);
+      }
+      
+      // Open Graph 태그 업데이트
+      let ogTitle = document.querySelector('meta[property="og:title"]');
+      if (ogTitle) {
+        ogTitle.setAttribute('content', title);
+      }
+      
+      let ogDescription = document.querySelector('meta[property="og:description"]');
+      if (ogDescription) {
+        ogDescription.setAttribute('content', description);
+      }
+    }
+  }
+
+  // 페이지 로드 시 기본 메타 태그 설정
+  onMount(() => {
+    updateMetaTags(
+      'ZPL 바코드 생성기 - 온라인 바코드 생성 도구',
+      'ZPL(Zebra Programming Language) 코드를 입력하면 바코드 이미지를 자동으로 생성하는 무료 온라인 도구입니다.'
+    );
+  });
 </script>
 
-<main>
+<main role="main" aria-label="ZPL 바코드 생성기">
   <div class="container">
     <!-- 헤더 -->
     <header class="header">
@@ -134,7 +175,7 @@
 
     <div class="content">
       <!-- 입력 섹션 -->
-      <section class="input-section">
+      <section class="input-section" aria-label="ZPL 코드 입력">
         <div class="input-group">
           <label for="zpl-input">ZPL 코드 입력</label>
           <textarea
@@ -164,7 +205,7 @@
 
       <!-- 템플릿 섹션 -->
       {#if showTemplates}
-        <section class="template-section">
+        <section class="template-section" aria-label="바코드 템플릿">
           <h3>빠른 템플릿</h3>
           <div class="template-form">
             <div class="form-row">
@@ -198,7 +239,7 @@
 
       <!-- 결과 섹션 -->
       {#if barcodes.length > 0}
-        <section class="results-section">
+        <section class="results-section" aria-label="생성된 바코드 결과">
           <div class="results-header">
             <h3>생성된 바코드 ({barcodes.length}개)</h3>
             <button class="btn btn-success" on:click={downloadAllBarcodes}>
@@ -217,7 +258,7 @@
                 
                 {#if generatedImages[index]}
                   <div class="barcode-image-container">
-                    <img src={generatedImages[index]} alt="바코드" />
+                    <img src={generatedImages[index]} alt="{barcode.type} 바코드: {barcode.data}" />
                     <p class="barcode-text">{barcode.data}</p>
                   </div>
                   

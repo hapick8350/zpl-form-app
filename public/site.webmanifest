@@ -1,0 +1,21 @@
+{
+  "name": "ZPL 바코드 생성기",
+  "short_name": "바코드 생성기",
+  "description": "ZPL 코드를 입력하면 바코드 이미지를 자동으로 생성하는 온라인 도구",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#6366f1",
+  "theme_color": "#6366f1",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
